@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cinematic Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #0f0f0f, #000);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* Background animation */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(255, 0, 80, 0.05),
+        rgba(255, 0, 80, 0.05) 2px,
+        transparent 2px,
+        transparent 10px
+      );
+      animation: moveBg 10s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes moveBg {
+      from { background-position: 0 0; }
+      to { background-position: 400px 400px; }
+    }
+
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 4rem;
+      letter-spacing: 4px;
+      color: #ff0055;
+      text-shadow: 0 0 20px rgba(255, 0, 85, 0.6);
+      animation: glitch 2s infinite;
+    }
+
+    header p {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      opacity: 0.8;
+    }
+
+    @keyframes glitch {
+      0% { text-shadow: 2px 2px #00fff7; }
+      25% { text-shadow: -2px 2px #ff0055; }
+      50% { text-shadow: 2px -2px #00fff7; }
+      75% { text-shadow: -2px -2px #ff0055; }
+      100% { text-shadow: 2px 2px #00fff7; }
+    }
+
+    section {
+      padding: 100px 10%;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .photo-box {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border: 3px solid #ff0055;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .photo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-box::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(255,0,85,0.3), transparent);
+      animation: scan 3s infinite;
+    }
+
+    @keyframes scan {
+      from { transform: translateX(-100%); }
+      to { transform: translateX(100%); }
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,0,85,0.4);
+      padding: 30px;
+      transition: 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 0 30px rgba(255,0,85,0.4);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,0,85,0.15), transparent);
+      opacity: 0;
+      transition: 0.4s;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      background: #050505;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    @media (max-width: 900px) {
+      .about {
+        grid-template-columns: 1fr;
+      }
+
+      header h1 {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>PLAYER 456</h1>
+    <p>Cinematic Portfolio • Koica Kesh</p>
+  </header>
+
+  <section class="about">
+    <div>
+      <h2>Обо мне</h2>
+      <p style="margin-top:20px; line-height:1.7;">
+        Я — креативный специалист. Этот сайт выполнен в кинематографичном стиле,
+        вдохновлённом сериалом «Игра кальмаров».
+      </p>
+    </div>
+
+    <div class="photo-box">
+      <!-- ЗАМЕНИ src НА СВОЁ ФОТО -->
+      <img src="456.jpg" alt="My Photo">
+    </div>
+  </section>
+
+  <section>
+    <h2 style="margin-bottom:40px;">Проекты</h2>
+    <div class="projects">
+      <div class="card">🔴 Проект №1 — Web-сайт<br><small>HTML, CSS, JavaScript — высокая скорость, 
+        современный UI, мобильная версия.</small></div>
+      <div class="card">🔴 Проект №2 — Web-приложение<br><small>JavaScript-логика, анимации,
+         работа с данными, UX-ориентированный интерфейс.</small></div>
+      <div class="card">🔴 Проект №3 — UI / Portfolio<br><small>реативный дизайн,
+         анимации, визуальные эффекты, бренд-айдентика.</small></div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 • Cinematic Portfolio
+  </footer>
+
+  <script>
+    // Плавное появление секций
+    const sections = document.querySelectorAll('section');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'fadeIn 1.2s forwards';
+        }
+      });
+    }, { threshold: 0.2 });
+
+    sections.forEach(sec => {
+      sec.style.opacity = 0;
+      observer.observe(sec);
+    });
+
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+
+</body>
+</html>
